@@ -7,7 +7,7 @@ import {
 
 import BaseMap from './layers/BaseMap'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import WMSLayer from './layers/WMSLayer'
+import WMSLayer from './layers/WMSLayer.js'
 import TiffLayer from './layers/Tiff';
 
 const MapContent = () => {
