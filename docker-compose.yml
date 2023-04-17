@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  geoserver:
+    image: pcic/geoserver
+    ports:
+      - "3870:8080"
+    volumes:
+      - ./leaflet/assets:/opt/geoserver/from_local
+    environment:
+      - GEOSERVER_ADMIN_PASSWORD=secret
+      - GEOSERVER_DATA_DIR=/opt/geoserver/data_dir
+  react-leaflet:
+    image: my-geoserver:1.0
+    build: ./leaflet
+    ports:
+      - "3000:3000"
+    environment:
+      - REACT_APP_GEOSERVER_URL=http://geoserver:3870/geoserver
+    depends_on:
+      - geoserver
